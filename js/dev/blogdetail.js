@@ -1,0 +1,3 @@
+import "./main.min.js";
+import "./watcher.min.js";
+import "./heroblock.min.js";
