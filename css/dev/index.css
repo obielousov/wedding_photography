@@ -496,6 +496,7 @@
 .body-award__text {
   flex-grow: 1;
   max-width: 38.375rem;
+  color: var(--muted-gray-color);
   text-align: center;
   font-size: clamp(1rem, 0.7913rem + 1.0435vw, 1.75rem); /* 28/16>1470-320 */
 }
@@ -982,10 +983,14 @@
 .form-contact__input::placeholder {
   color: #5b5b5b;
   text-transform: uppercase;
+  transition: opacity 0.3s;
 }
 .form-contact__input:focus {
   outline: none;
   border-bottom-color: var(--icon-color);
+}
+.form-contact__input:focus::placeholder {
+  opacity: 0;
 }
 .form-contact__input--textarea,
 .form-contact textarea.form-contact__input {

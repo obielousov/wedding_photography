@@ -265,7 +265,7 @@ function initSliders() {
 			observer: true,
 			observeParents: true,
 			spaceBetween: 50,
-			speed: 1e3,
+			speed: 500,
 			...hasAutoplay ? { autoplay: {
 				delay: Number(autoplayDelay),
 				disableOnInteraction: false
