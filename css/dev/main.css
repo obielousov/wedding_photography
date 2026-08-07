@@ -189,12 +189,23 @@ body {
   left: 0;
   width: 100%;
   z-index: 50;
+  transform: translateZ(0);
+  transition: padding-block 0.5s ease;
+}
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(245, 245, 245, 0.8);
   backdrop-filter: blur(0.625rem);
   -webkit-backdrop-filter: blur(0.625rem);
-  transition: padding-block 0.5s ease;
 }
 .header__container {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   min-height: 3.75rem;
@@ -308,6 +319,7 @@ body {
   color: var(--icon-color);
 }
 .blockhead__title {
+  margin-bottom: clamp(1.25rem, 0.7955rem + 2.2727vw, 2.5rem); /* 40/20>1200-320 */
   text-align: center;
   font-family: var(--font-CormorantM);
   font-size: clamp(1.125rem, 0.9511rem + 0.8696vw, 1.75rem); /* 28/18>1470-320 */
@@ -323,6 +335,7 @@ body {
   color: var(--gray-color);
 }
 .blockhead__text {
+  margin-bottom: clamp(1.25rem, 0.7955rem + 2.2727vw, 2.5rem); /* 40/20>1200-320 */
   text-align: center;
   font-family: var(--font-CormorantL);
   font-size: clamp(1.375rem, 0.6446rem + 3.6522vw, 4rem); /* 64/22>1470-320 */
@@ -402,20 +415,42 @@ body {
   }
   .header__menu {
     position: fixed;
-    top: 0;
-    left: -100%;
+    top: 100%;
+    left: 100%;
     width: 100%;
-    height: 100dvh;
+    height: calc(100dvh - 100%);
+    visibility: hidden;
+    overflow: auto;
     z-index: 5;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1.875rem;
-    background: var(--bg-color);
-    transition: left 0.4s ease;
-    padding: 5rem 0.9375rem 1.875rem;
+    row-gap: 1.5625rem;
+    padding: 2.1875rem 0.9375rem 1.875rem;
+    transition: left 0.3s, visibility 0.3s;
+  }
+  .header__menu > :first-child {
+    margin-top: auto;
+  }
+  .header__menu > :last-child {
+    margin-bottom: auto;
+  }
+  .header__menu::before {
+    content: "";
+    position: fixed;
+    top: 100%;
+    left: 100%;
+    width: 100%;
+    height: calc(100dvh - 100%);
+    z-index: -1;
+    background: rgba(245, 245, 245, 0.8);
+    backdrop-filter: blur(0.625rem);
+    -webkit-backdrop-filter: blur(0.625rem);
+    transition: left 0.3s;
   }
   [data-fls-menu-open] .header__menu {
+    left: 0;
+    visibility: visible;
+  }
+  [data-fls-menu-open] .header__menu::before {
     left: 0;
   }
   .header__logo {
