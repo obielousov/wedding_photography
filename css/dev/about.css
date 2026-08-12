@@ -199,7 +199,7 @@
   translate: 1.875rem 0;
   transition: opacity 0.8s ease, translate 0.8s ease;
 }
-.memories__image {
+.memories__image img {
   width: 100%;
   height: 100%;
   aspect-ratio: 291/422;
@@ -251,7 +251,7 @@
   .memories__media {
     grid-template-columns: 1fr;
   }
-  .memories__image {
+  .memories__image img {
     aspect-ratio: 1;
   }
   .memories__image:last-child {
